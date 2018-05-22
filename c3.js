@@ -1321,6 +1321,9 @@
             $$.initGridLines();
         }
 
+        // Cover whole with rects for events
+        $$.initEventRect();
+
         // Define g for chart
         $$.initChartElements();
 
@@ -1329,9 +1332,6 @@
 
         // Set targets
         $$.updateTargets($$.data.targets);
-
-        // Cover whole with rects for events
-        $$.initEventRect();
 
         // Set default extent if defined
         if (config.axis_x_selection) {
@@ -4603,9 +4603,7 @@
                 return;
             }
             $$.d3.select(this).selectAll('path').transition().duration($$.expandDuration(d.data.id)).attr("d", $$.svgArcExpanded).transition().duration($$.expandDuration(d.data.id) * 2).attr("d", $$.svgArcExpandedSub).each(function (d) {
-                if ($$.isDonutType(d.data)) {
-                    // callback here
-                }
+                if ($$.isDonutType(d.data)) ;
             });
         });
     };
